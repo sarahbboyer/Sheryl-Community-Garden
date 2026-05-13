@@ -22,11 +22,6 @@ A React + Vite app with a lightweight backend API for managing garden volunteers
 - `Membership` — membership interest form and plan overview.
 - `Admin` — sign in to manage volunteers and membership requests.
 
-## Admin preview credentials
-
-- Email: `admin@communitygarden.org`
-- Password: `garden123`
-
 ## Backend API
 
 - Runs on `http://localhost:4174`
