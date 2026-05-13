@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Community Garden</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <h1>Community Garden</h1>
+      <p>Admin dashboard</p>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="volunteer.html">Volunteer</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="admin-page">
+    <section class="card admin-panel">
+      <h2>Admin sign in</h2>
+      <form id="adminSignInForm" class="form-grid">
+        <label>
+          Email
+          <input type="email" id="adminEmail" placeholder="admin@communitygarden.org" required />
+        </label>
+        <label>
+          Password
+          <input type="password" id="adminPassword" placeholder="Enter password" required />
+        </label>
+        <button class="button" type="submit">Sign In</button>
+      </form>
+      <p class="hint">Use <strong>admin@communitygarden.org</strong> and password <strong>garden123</strong> to preview the admin flow.</p>
+    </section>
+
+    <section id="adminDashboard" class="admin-dashboard hidden">
+      <div class="dashboard-header">
+        <div>
+          <h2>Volunteer sign-up management</h2>
+          <p>Review and manage people who signed up to come to the garden.</p>
+        </div>
+        <button class="button button-secondary" id="signOutButton">Sign Out</button>
+      </div>
+
+      <div class="card">
+        <h3>Add a new guest</h3>
+        <form id="adminAddPersonForm" class="form-grid">
+          <label>
+            Name
+            <input type="text" id="personName" placeholder="Name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" id="personEmail" placeholder="Email" required />
+          </label>
+          <label>
+            Visit date
+            <input type="date" id="personDate" required />
+          </label>
+          <button class="button" type="submit">Add person</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>People signed up</h3>
+        <div id="signupList" class="table-scroll"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Community Garden • Admin prototype • © 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

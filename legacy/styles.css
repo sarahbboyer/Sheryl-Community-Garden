@@ -1,0 +1,324 @@
+:root {
+  --bg: #f5f9f3;
+  --surface: #ffffff;
+  --surface-strong: #e8f0e7;
+  --text: #243f23;
+  --text-muted: #5d755f;
+  --accent: #6b9c4e;
+  --accent-dark: #4f7b36;
+  --border: #dbe3d3;
+  --shadow: 0 18px 40px rgba(36, 63, 35, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top left, rgba(108, 145, 80, 0.15), transparent 40%), radial-gradient(circle at bottom right, rgba(117, 185, 98, 0.14), transparent 35%), var(--bg);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 18px;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(77, 118, 56, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.85rem;
+}
+
+.brand p {
+  margin: 0.25rem 0 0;
+  color: var(--text-muted);
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.main-nav a:hover {
+  color: var(--accent);
+}
+
+.hero {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  padding: 3rem 1.5rem 2rem;
+}
+
+.hero-copy {
+  max-width: 620px;
+}
+
+.hero h2 {
+  font-size: clamp(2.3rem, 4vw, 3.5rem);
+  margin: 0 0 1rem;
+  line-height: 1.05;
+}
+
+.hero-copy p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin: 0 0 1.75rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  background: var(--accent-dark);
+}
+
+.button-secondary {
+  background: rgba(91, 129, 69, 0.12);
+  color: var(--text);
+}
+
+.info-grid,
+.media-grid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 0 1.5rem 2rem;
+}
+
+.info-grid {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+}
+
+.card h3,
+.card h2 {
+  margin-top: 0;
+}
+
+.media-section {
+  padding: 0 1.5rem 2rem;
+}
+
+.media-section h2,
+.video-section h2 {
+  margin-bottom: 1rem;
+}
+
+.media-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.photo-card p {
+  margin: 0.75rem 0 0;
+  color: var(--text-muted);
+}
+
+.video-section {
+  padding: 0 1.5rem 2rem;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border: 0;
+}
+
+.cta-section {
+  padding: 2rem 1.5rem 3rem;
+  text-align: center;
+}
+
+.cta-section h2 {
+  margin-bottom: 0.75rem;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-muted);
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-strong);
+  color: var(--text);
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+volunteer-page,
+.admin-page {
+  padding: 2rem 1.5rem 3rem;
+}
+
+.admin-page {
+  padding: 2rem 1.5rem 3rem;
+}
+
+.admin-panel,
+.volunteer-form-card,
+.schedule-card {
+  max-width: 960px;
+  margin: 0 auto 1.5rem;
+}
+
+.admin-dashboard {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.signup-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.signup-table th,
+.signup-table td {
+  text-align: left;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.signup-table th {
+  background: var(--surface-strong);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.success-box {
+  background: #ebf7ea;
+  border: 1px solid #c8e3c0;
+  padding: 1.5rem;
+  border-radius: 20px;
+  margin-top: 1rem;
+}
+
+.hint {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .main-nav {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 740px) {
+  .site-header {
+    padding: 1.25rem;
+  }
+  .hero {
+    padding-top: 2rem;
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volunteer - Community Garden</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <h1>Community Garden</h1>
+      <p>Volunteer sign-up</p>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="volunteer.html">Volunteer</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="volunteer-page">
+    <section class="card volunteer-form-card">
+      <h2>Join a volunteer day</h2>
+      <p>Choose a day and help our garden grow. You'll receive a confirmation message right away.</p>
+      <form id="volunteerForm" class="form-grid">
+        <label>
+          Full name
+          <input type="text" id="volunteerName" placeholder="Your name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" id="volunteerEmail" placeholder="Your email" required />
+        </label>
+        <label>
+          Preferred day
+          <select id="volunteerDay" required>
+            <option value="">Select a day</option>
+            <option>Monday morning</option>
+            <option>Wednesday afternoon</option>
+            <option>Saturday</option>
+            <option>Sunday community harvest</option>
+          </select>
+        </label>
+        <label>
+          Notes
+          <textarea id="volunteerNotes" placeholder="Tell us if you have gardening experience or need a specific role."></textarea>
+        </label>
+        <button class="button" type="submit">Sign Up</button>
+      </form>
+      <div id="volunteerSuccess" class="success-box hidden">
+        <h3>Thank you!</h3>
+        <p>Your volunteer request has been saved locally for this prototype.</p>
+      </div>
+    </section>
+
+    <section class="card schedule-card">
+      <h2>Upcoming volunteer days</h2>
+      <ul>
+        <li>Monday 9:00 AM – 12:00 PM: Planting and weeding</li>
+        <li>Wednesday 2:00 PM – 5:00 PM: Compost care</li>
+        <li>Saturday 10:00 AM – 1:00 PM: Harvest prep</li>
+        <li>Sunday 11:00 AM – 2:00 PM: Community harvest</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Community Garden • Volunteer prototype • © 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
