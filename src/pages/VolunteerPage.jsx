@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "../supabase";
 
 const schedule = [
   "Monday 9:00 AM – 12:00 PM: Planting and weeding",
@@ -18,38 +19,31 @@ function VolunteerPage() {
 
     const form = event.target;
     const formData = new FormData(form);
-    const payload = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      day: formData.get("day"),
-      notes: formData.get("notes"),
-    };
 
-    try {
-      const response = await fetch("http://localhost:4174/api/volunteers", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+    const { error } = await supabase.from("volunteers").insert([
+      {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        preferred_day: formData.get("day"),
+        notes: formData.get("notes"),
+      },
+    ]);
 
-      if (!response.ok) {
-        throw new Error("Unable to save volunteer signup.");
-      }
-
+    if (error) {
+      setStatus("There was a problem submitting your sign-up. Please try again later.");
+    } else {
       form.reset();
       setStatus("Thank you! Your volunteer request was received.");
-    } catch (error) {
-      setStatus("There was a problem submitting your sign-up. Please try again later.");
-    } finally {
-      setSubmitting(false);
     }
+
+    setSubmitting(false);
   };
 
   return (
     <section className="page-section">
       <div className="form-card card">
         <h2>Volunteer sign-up</h2>
-        <p>Pick a day and join our garden team. We’ll save your request for the garden administrators to review.</p>
+        <p>Pick a day and join our garden team. We'll save your request for the garden administrators to review.</p>
         <form onSubmit={handleSubmit} className="form-card" style={{ display: "grid", gap: "1.25rem" }}>
           <label>
             Full name

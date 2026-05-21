@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, Routes, Route } from "react-router-dom";
+import { supabase } from "./supabase";
 import HomePage from "./pages/HomePage";
 import VolunteerPage from "./pages/VolunteerPage";
 import MembershipPage from "./pages/MembershipPage";
@@ -7,15 +8,19 @@ import AdminPage from "./pages/AdminPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-  const [adminToken, setAdminToken] = useState(() => localStorage.getItem("gardenAdminToken") || "");
+  const [session, setSession] = useState(null);
 
   useEffect(() => {
-    if (adminToken) {
-      localStorage.setItem("gardenAdminToken", adminToken);
-    } else {
-      localStorage.removeItem("gardenAdminToken");
-    }
-  }, [adminToken]);
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <div className="app-shell">
@@ -39,7 +44,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/volunteer" element={<VolunteerPage />} />
           <Route path="/membership" element={<MembershipPage />} />
-          <Route path="/admin" element={<AdminPage adminToken={adminToken} onSignIn={setAdminToken} onSignOut={() => setAdminToken("")} />} />
+          <Route path="/admin" element={<AdminPage session={session} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
