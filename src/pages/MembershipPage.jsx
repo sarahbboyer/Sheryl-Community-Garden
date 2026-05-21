@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "../supabase";
 
 const plans = [
   { title: "Garden Supporter", price: "$15/mo", description: "Access to updates, volunteer news, and garden events." },
@@ -14,33 +15,27 @@ function MembershipPage() {
     event.preventDefault();
     setStatus("");
     setSubmitting(true);
+
     const form = event.target;
     const formData = new FormData(form);
-    const payload = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      plan: formData.get("plan"),
-      message: formData.get("message"),
-    };
 
-    try {
-      const response = await fetch("http://localhost:4174/api/memberships", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+    const { error } = await supabase.from("memberships").insert([
+      {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        plan: formData.get("plan"),
+        message: formData.get("message"),
+      },
+    ]);
 
-      if (!response.ok) {
-        throw new Error("Unable to submit membership request.");
-      }
-
+    if (error) {
+      setStatus("There was a problem with your request. Please try again.");
+    } else {
       form.reset();
       setStatus("Thanks! Your membership request was submitted.");
-    } catch (error) {
-      setStatus("There was a problem with your request. Please try again.");
-    } finally {
-      setSubmitting(false);
     }
+
+    setSubmitting(false);
   };
 
   return (
